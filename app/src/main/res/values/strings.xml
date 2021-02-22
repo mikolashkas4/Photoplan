@@ -1,0 +1,7 @@
+<resources>
+    <string name="app_name">Photoplan</string>
+    <string name="locationView">Локации</string>
+    <string name="street">Улицы</string>
+    <string name="nameLocation">Название улицы</string>
+    
+</resources>
