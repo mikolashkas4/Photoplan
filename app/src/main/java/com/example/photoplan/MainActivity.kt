@@ -36,7 +36,7 @@ class MainActivity : AppCompatActivity() {
             mainActivityPresenter.renameSection()
         }
         addButton.setOnClickListener {
-            val intent = AddPhoto.openFileChooser();
+            val intent = mainActivityPresenter.choosePhoto()
             startActivityForResult(Intent.createChooser(intent, "Select Picture"), 1)
         }
 
