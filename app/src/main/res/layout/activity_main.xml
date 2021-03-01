@@ -50,13 +50,34 @@
     android:layout_marginTop="20dp"
     android:elevation="10dp"
     android:paddingBottom="20dp">
+
+
   <LinearLayout
       android:layout_width="350dp"
       android:layout_height="wrap_content"
       android:layout_gravity="center"
       android:orientation="vertical"
       android:background="@drawable/linearlayoutphoto">
-    <LinearLayout
+      <FrameLayout
+          android:layout_width="match_parent"
+          android:layout_height="wrap_content">
+      <EditText
+          android:layout_width="wrap_content"
+          android:layout_height="wrap_content"
+          android:hint="@string/nameLocation"
+          android:background="@null"
+          />
+      <Button
+          android:layout_width="25dp"
+          android:layout_height="25dp"
+          android:textSize="10dp"
+          android:text="+"
+         android:gravity="center"
+          android:background="@drawable/addbutton"
+          android:id="@+id/addPhotoButton"
+          android:layout_gravity="right"/>
+      </FrameLayout>
+      <LinearLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
@@ -103,16 +124,20 @@
 
   </LinearLayout>
 </LinearLayout>
-  <LinearLayout
-      android:layout_width="match_parent"
-      android:layout_height="100dp"
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="100dp"
 
-      android:background="@drawable/linearlayouttop"
-      android:layout_gravity="center"
-      android:orientation="vertical"
-      android:layout_marginTop="20dp"
-      android:elevation="10dp"
-      android:paddingBottom="20dp">
+        android:background="@drawable/linearlayouttop"
+        android:layout_gravity="center"
+        android:orientation="vertical"
+        android:layout_marginTop="20dp"
+        android:elevation="10dp"
+        android:paddingBottom="20dp">
+
+
+
+
     <EditText
          android:background="@drawable/edittextstyle"
             android:layout_width="350dp"
@@ -127,24 +152,38 @@
             android:layout_marginTop="30dp"
             android:hint="@string/nameLocation"
               android:layout_marginBottom="20dp"/>
+        <Button
+            android:layout_marginTop="35dp"
+            android:layout_marginRight="40dp"
+            android:layout_width="25dp"
+            android:layout_height="25dp"
+            android:textSize="10dp"
+            android:text="+"
+            android:gravity="center"
+            android:background="@drawable/addbutton"
+            android:layout_gravity="right"/>
 
-  </LinearLayout>
+    </FrameLayout>
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:layout_weight="30">
 
-            <ImageButton
+            <Button
                 android:layout_marginTop="20dp"
-                android:src="@drawable/addbutton"
-                android:layout_width="40dp"
-                android:layout_height="40dp"
+
+                android:layout_width="50dp"
+                android:layout_height="50dp"
                 android:scaleType="fitCenter"
                 android:elevation="10dp"
                 android:id="@+id/addButton"
                 android:layout_gravity="right"
-                android:background="@color/white"/>
+                android:text="+"
+
+                android:background="@drawable/addbutton"
+                />
 
 
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_weight="30">
+
 
 
 

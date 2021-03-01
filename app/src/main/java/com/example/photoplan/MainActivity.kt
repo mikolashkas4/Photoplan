@@ -1,34 +1,42 @@
 package com.example.photoplan
 
 import android.annotation.SuppressLint
-import android.app.Activity
 import android.content.Intent
 import android.net.Uri
 import android.os.Bundle
-import android.widget.ImageButton
+import android.widget.Button
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
-import androidx.core.app.ActivityCompat
-import java.io.FileNotFoundException
+import com.example.photoplan.mvp.models.FireBaseAdapter
+import com.example.photoplan.mvp.presenter.MainActivityPresenter
+import com.example.photoplan.mvp.views.iMainActivityPresenter
 import java.lang.Exception
 
 
 class MainActivity : AppCompatActivity() {
-    public lateinit var fireBaseAdapter:FireBaseAdapter;
+    //public lateinit var fireBaseAdapter: FireBaseAdapter;
+
+
+    var mainActivityPresenter:iMainActivityPresenter = MainActivityPresenter()
+
+
+
     @SuppressLint("WrongViewCast")
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
 
-        lateinit var addButton:ImageButton;
+        lateinit var addButton:Button;
+        lateinit var addPhotoButton: Button;
 
         addButton = findViewById(R.id.addButton);
-
+        addPhotoButton = findViewById(R.id.addPhotoButton);
+        addPhotoButton.setOnClickListener{
+            mainActivityPresenter.renameSection()
+        }
         addButton.setOnClickListener {
-
             val intent = AddPhoto.openFileChooser();
-
             startActivityForResult(Intent.createChooser(intent, "Select Picture"), 1)
         }
 
@@ -36,24 +44,20 @@ class MainActivity : AppCompatActivity() {
 
 
 
-    private fun openFileChooser() {
-        val intent = Intent()
-        intent.type = "image/*"
-        intent.action = Intent.ACTION_PICK
-        startActivityForResult(Intent.createChooser(intent, "Select Picture"), 1)
 
-    }
+
+
 
 
 
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
         super.onActivityResult(requestCode, resultCode, data)
         if (requestCode == 1 && data != null) {
-            fireBaseAdapter = FireBaseAdapter()
+
             var imageUri = data.data as Uri
             Toast.makeText(this, imageUri.toString(), Toast.LENGTH_SHORT).show()
             try {
-                fireBaseAdapter.UploadFile(imageUri,contentResolver,this)
+                mainActivityPresenter.putPhoto(imageUri,contentResolver,this)
             }
             catch (e:Exception)
             {
